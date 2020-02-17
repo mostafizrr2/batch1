@@ -1,5 +1,9 @@
 <?php 
 
+include "./classes/dump.php";
+include "./classes/sec.php";
+
+
 $host = "localhost";
 $user = "root";
 $pwd = "";
@@ -13,6 +17,21 @@ if(isset($_POST['submit']))
 
     $title = $_POST['title'];
 
+    // $title = sec($title);
+
+
+    $file = $_FILES['image'];
+
+    // dd( $title);
+
+
+    if( empty($file['name']) || empty($title) )
+    {
+        header('location: index.php');
+        exit;
+    }
+    
+  
     $file_name = $_FILES['image']['name'];
     $file_size = $_FILES['image']['size'];
     $file_tmp = $_FILES['image']['tmp_name'];
