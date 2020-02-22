@@ -2,15 +2,9 @@
 
 include "./classes/dump.php";
 include "./classes/sec.php";
+include "./classes/DB.php";
 
-
-$host = "localhost";
-$user = "root";
-$pwd = "";
-$dbname = "image_db";
-
-$conn = new mysqli($host, $user, $pwd, $dbname);
-
+$db = new DB();
 
 if(isset($_POST['submit']))
 {
@@ -42,7 +36,9 @@ if(isset($_POST['submit']))
     $new_name = time() . "." . $ext;
 
    
-    $insert = $conn->query("INSERT INTO images(file_name, title) VALUES('$new_name', '$title')");
+    $sql = "INSERT INTO images(file_name, title) VALUES('$new_name', '$title')";
+    
+    $insert =  $db->insert($sql);
 
     if($insert)
     {

@@ -1,16 +1,20 @@
 <?php 
 
-$host = "localhost";
-$user = "root";
-$pwd = "";
-$dbname = "image_db";
-$conn = new mysqli($host, $user, $pwd, $dbname);
+include "./classes/dump.php";
+include './classes/DB.php';
 
+$db = new DB();
 
 $id = $_GET['imgid'];
 
-$data = $conn->query("SELECT * FROM images WHERE id = $id");
+$sql = "SELECT * FROM images WHERE id = $id";
 
+$image = $db->getData($sql);
+
+if($image->num_rows < 1)
+{
+    die("No image found.");
+}
 // echo "<pre>";
 // print_r($data->fetch_assoc());
 // die;
@@ -28,7 +32,7 @@ $data = $conn->query("SELECT * FROM images WHERE id = $id");
     <br><br><br>
 
      <?php 
-        while ($row = $data->fetch_assoc())
+        while ($row = $image->fetch_assoc())
         {
      ?>
         <div class="images">

@@ -1,13 +1,11 @@
 <?php
+include "./classes/dump.php";
+include './classes/DB.php';
 
-$host = "localhost";
-$user = "root";
-$pwd = "";
-$dbname = "image_db";
+$db = new DB();
+$sql = "SELECT * FROM images ORDER BY id DESC";
+$images = $db->getData($sql);
 
-$conn = new mysqli($host, $user, $pwd, $dbname);
-
-$data = $conn->query("SELECT * FROM images ORDER BY id DESC");
 
 // echo "<pre>";
 // print_r($data);
@@ -32,9 +30,9 @@ $data = $conn->query("SELECT * FROM images ORDER BY id DESC");
     <div class="container">
         <div class="row">
             <?php
-            if ($data->num_rows > 0) {
+            if ($images->num_rows > 0) {
 
-                while ($img = $data->fetch_assoc()) {
+                while ($img = $images->fetch_assoc()) {
             ?>
                 <div class="col-md-4">
                     <div class="images">
@@ -43,6 +41,10 @@ $data = $conn->query("SELECT * FROM images ORDER BY id DESC");
                         <a href="single-img.php?imgid=<?= $img['id'] ?>">
                             <p><?= $img['title'] ?></p>
                         </a>
+                        <a onclick="return confirm('Are you sure to delete this?');" 
+                            class="btn btn-danger btn-sm" 
+                            href="delete.php?imgid=<?= $img['id'] ?>"
+                        >Delete</a>
                     </div>
                 </div>            
             <?php
