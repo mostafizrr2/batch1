@@ -5,7 +5,7 @@ class DB{
     private $host = "localhost";
     private $user = "root";
     private $pwd = "";
-    private $dbname = "image_db";
+    private $dbname = "db_contact";
 
     public $conn;
 

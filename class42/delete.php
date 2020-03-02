@@ -12,19 +12,18 @@ $image = $db->getData($sql);
 
 $row = $image->fetch_assoc();
 
-$removed =  unlink('uploads/'. $row['file_name']);
-
-if(!$removed)
+if(file_exists('uploads/'. $row['file_name']))
 {
-   die("File not deleted from the directory.");
+    unlink('uploads/'. $row['file_name']);
 }
+
 
 $sql2 = "DELETE FROM images WHERE id = $id";
 $deleted = $db->delete($sql2);
 
 if($deleted)
 {
-   header('location: images.php');
+   header('location: index.php');
    exit;
 }
 else 

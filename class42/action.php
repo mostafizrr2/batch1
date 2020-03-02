@@ -1,5 +1,6 @@
 <?php 
 
+
 include "./classes/dump.php";
 include "./classes/sec.php";
 include "./classes/DB.php";
@@ -38,13 +39,12 @@ if(isset($_POST['submit']))
    
     $sql = "INSERT INTO images(file_name, title) VALUES('$new_name', '$title')";
     
-    $insert =  $db->insert($sql);
 
-    if($insert)
+    if( $db->insert($sql) )
     {
         move_uploaded_file($file_tmp, 'uploads/'. $new_name);
         
-        header("location: images.php");
+        header("location: index.php");
         
         exit;  
     } 
