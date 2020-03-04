@@ -1,9 +1,11 @@
 <?php 
 
 session_start();
+include __DIR__."/../config.php";
 
-include(__DIR__."./helpers/dump.php");
-include(__DIR__."./classes/DB.php");
+
+include($base_path ."helpers/dump.php");
+include($base_path ."classes/DB.php");
 
 $db = new DB;
 
@@ -41,7 +43,7 @@ if(isset($_POST['submit']))
        $ext = strtolower(end($exp));
        $new_name = time().'.'.$ext;
        
-       $path = "uploads/".$new_name;
+       $path = $base_path."uploads/".$new_name;
 
        move_uploaded_file($image['tmp_name'],  $path);
     }
@@ -57,7 +59,7 @@ if(isset($_POST['submit']))
     if($db->insert($sql))
     {
         $_SESSION['contact_success'] = "New contact created successfully.";
-        header("location: contacts.php");
+        header("location: ../contacts.php");
         exit;
     }
 

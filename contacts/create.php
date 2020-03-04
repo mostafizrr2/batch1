@@ -1,12 +1,12 @@
 <?php 
-include"inc/header.php";
+include "inc/header.php";
 ?>
 
 <div class="row">
     <div class="col-8 offset-2">
          <br><br>
         <h2>Create new contact</h2>
-        <form action="storecontact.php" method="POST" enctype="multipart/form-data">
+        <form action="actions/storecontact.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="">Name</label>
 
@@ -84,8 +84,8 @@ include"inc/header.php";
         </form>
 
           <br><br><br><br> 
-      </div>
     </div>
+</div>
 
 
 <?php 

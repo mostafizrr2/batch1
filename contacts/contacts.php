@@ -1,9 +1,8 @@
 <?php 
 include "inc/header.php";
 
-include "classes/DB.php";
+// dd(__DIR__);
 
-$db = new DB;
 
 $sql = "SELECT * FROM contacts ORDER BY id DESC";
 
@@ -59,8 +58,8 @@ $data = $db->getData($sql);
                     <td><?=  $row['c_number'] ?></td>
                     <td><?= ($row['c_status'] == true) ?  "Published" : "Unpublished"  ?></td>
                     <td>
-                        <a href="#" class="btn btn-info btn-sm">Edit</a>
-                        <a href="delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="edit.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm">Edit</a>
+                        <a href="actions/delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
             <?php 

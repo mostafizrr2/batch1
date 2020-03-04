@@ -1,8 +1,14 @@
 <?php 
-  include(__DIR__."./../helpers/menu-helper.php");
-  include(__DIR__."./../helpers/dump.php");
+  include __DIR__."/../config.php";
+  
+  include($base_path."helpers/menu-helper.php");
+  include($base_path."helpers/dump.php");
 
   session_start();
+
+
+  include $base_path."classes/DB.php";
+  $db = new DB;
 
 ?>
 

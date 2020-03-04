@@ -67,7 +67,7 @@ class DB{
         }
         else 
         {
-            return false;
+            die('Something went wrong when updating.');
         }
         
     }
