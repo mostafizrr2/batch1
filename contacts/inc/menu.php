@@ -21,11 +21,38 @@
         <a class="nav-link" href="contacts.php">All Contacts</a>
       </li>
 
+
+      <?php 
+          if(!isset($_SESSION['user_id']))
+          {
+      ?>
+
+
+      <li class="nav-item  <?php setActive("contacts/login.php","active") ?>">
+        <a class="nav-link" href="login.php">Login</a>
+      </li>
+
+      <li class="nav-item  <?php setActive("contacts/register.php","active") ?>">
+        <a class="nav-link" href="register.php">Register</a>
+      </li>
+
+      <?php 
+        }
+        else 
+        {
+       ?>
+        <li class="nav-item  <?php setActive("contacts/register.php","active") ?>">
+          <a class="nav-link" href="profile.php"><?= $_SESSION['name'] ?></a>
+        </li>
+       <?php  
+        }
+      
+      ?>
      
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form action="search.php" method="GET"  class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
       <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
     </form>
 

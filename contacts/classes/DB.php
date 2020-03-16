@@ -50,7 +50,7 @@ class DB{
         }
         else 
         {
-            die("Error! Something went wrong when insertation");
+            die("Error! Something went wrong when fetching data");
         }
 
     }
